@@ -36,4 +36,7 @@ Pull tous les projets
 ```
 make pull
 ```
-
+Génere les certificats pour les JWT (eronn-pass-api)
+```
+make cert
+```

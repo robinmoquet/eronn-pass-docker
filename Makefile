@@ -9,19 +9,25 @@ clone:
 
 .PHONY: install
 install: 
-	cd eronn-pass-api && npm install && cd ..
-	cd eronn-pass-mailer && npm install && cd ..
+	cd eronn-pass-api && npm install
+	cd eronn-pass-mailer && npm install
 
 .PHONY: build
 build: 
-	cd eronn-pass-api && npm run build && cd ..
-	cd eronn-pass-mailer && npm run build && cd ..
+	cd eronn-pass-api && npm run build
+	cd eronn-pass-mailer && npm run build
 
 .PHONY: pull
 pull: 
-	cd eronn-pass-api && git pull && cd ..
-	cd eronn-pass-mailer && git pull && cd ..
+	cd eronn-pass-api && git pull
+	cd eronn-pass-mailer && git pull
 
 .PHONY: dev
 dev: 
 	docker-compose up
+
+.PHONY: cert
+cert: 
+	cd eronn-pass-api && mkdir cert
+	cd eronn-pass-api/cert && ssh-keygen -t rsa -b 4096 -m PEM -f jwtRS256.key
+	cd eronn-pass-api/cert && openssl rsa -in jwtRS256.key -pubout -outform PEM -out jwtRS256.key.pub
