@@ -28,7 +28,7 @@ make dev
 Après ces étapes vous avez accès à : 
 - L'api sur `localhost:5000`
 - Mailer sur `localhost:3535`
-- Adminer sur `localhost:8888` (adminer est une équivalence à phpmyadmin)
+- Adminer sur `localhost:8888` (adminer est une équivalence de phpmyadmin)
 
 ### Commandes utiles
 
