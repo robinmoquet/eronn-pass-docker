@@ -27,8 +27,9 @@ make dev
 
 Après ces étapes vous avez accès à : 
 - L'api sur `localhost:5000`
-- Mailer sur `localhost:3535`
+- Mailer sur `localhost:3535` (microservice qui gére l'envoi des mails)
 - Adminer sur `localhost:8888` (adminer est une équivalence de phpmyadmin)
+- MailCatcher sur `localhost:1080` (permet de recupérer tous les mail envoyer) 
 
 ### Commandes utiles
 

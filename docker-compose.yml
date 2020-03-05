@@ -10,6 +10,8 @@ services:
             - ./eronn-pass-mailer/:/var/www
         ports:
             - 3535:3535
+        links:
+            - mailsmtp:mailsmtp
     api:
         build:
             context: ./docker/node
@@ -42,3 +44,7 @@ services:
             - db
         ports:
             - 8888:8080
+    mailsmtp:
+        image: schickling/mailcatcher
+        ports:
+            - 1080:1080
