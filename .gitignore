@@ -1,0 +1,7 @@
+node_modules/
+.idea
+.DS_Store
+eronn-pass-api/
+eronn-pass-mailer/
+eronn-pass-front/
+mysql/*

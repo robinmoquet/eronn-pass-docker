@@ -1,0 +1,44 @@
+version: '3'
+services:
+    mailer:
+        build:
+            context: ./docker/node
+        command: npm run dev
+        working_dir: /var/www
+        # user: "${USER_ID}:${GROUP_ID}"
+        volumes:
+            - ./eronn-pass-mailer/:/var/www
+        ports:
+            - 3535:3535
+    api:
+        build:
+            context: ./docker/node
+        command: npm run dev
+        working_dir: /var/www
+        # user: "${USER_ID}:${GROUP_ID}"
+        volumes:
+            - ./eronn-pass-api/:/var/www
+        ports:
+            - 5000:5000
+        links:
+            - db:db
+            - mailer:mailer
+    db:
+        image: mysql:5.7
+        environment:
+            MYSQL_ROOT_PASSWORD: root
+            MYSQL_DATABASE: eronn-pass
+        ports:
+            - 3306:3306 # On expose le port pour pouvoir inspecter la base pendant la phase de développement
+        volumes:
+            - ./mysql:/var/lib/mysql
+        
+    adminer:
+        image: adminer:standalone
+        environment:
+            ADMINER_DESIGN: arcs-material
+            ADMINER_DEFAULT_SERVER: mysql
+        links:
+            - db
+        ports:
+            - 8888:8080
